@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppstoreOutlined, ProductOutlined,UsergroupAddOutlined} from '@ant-design/icons';
-import { Menu } from 'antd';
-import { useNavigate } from 'react-router-dom';
+import { Col, Menu, Row } from 'antd';
+import { Outlet, useNavigate } from 'react-router-dom';
 function getItem(label, key, icon, children, type) {
   return {
     key,
@@ -36,7 +36,13 @@ const Home = () => {
     navigate(e.key);
   };
   return (
-    <Menu
+    <>
+    
+
+
+
+    <Row>
+      <Col span={8}>    <Menu
       onClick={onClick}
       style={{
         width: 256,
@@ -45,7 +51,12 @@ const Home = () => {
     //   defaultOpenKeys={['sub1']}
       mode="inline"
       items={items}
-    />
+    /></Col>
+      <Col span={16}>
+        <Outlet></Outlet>
+      </Col>
+    </Row>
+    </>
   );
 };
 export default Home;
