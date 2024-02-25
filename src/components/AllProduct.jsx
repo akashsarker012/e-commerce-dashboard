@@ -8,15 +8,17 @@ export default function AllProduct() {
 
   const confirm = () => {
     setOpen(false);
-    message.success('Detele Successfully');
+    message.success("Detele Successfully");
   };
 
-  console.log(productInfo);
+  // console.log(productInfo);
 
   useEffect(() => {
     async function getProductData() {
       try {
-        const productData = await axios.get("http://localhost:3000/api/v1/product/getallproduct");
+        const productData = await axios.get(
+          "http://localhost:3000/api/v1/product/getallproduct"
+        );
         setProductInfo(productData.data);
       } catch (error) {
         console.error("Error fetching product data:", error);
@@ -26,21 +28,24 @@ export default function AllProduct() {
   }, [productInfo]);
 
   const handleDelete = async (id) => {
-    let data = await axios.post("http://localhost:3000/api/v1/product/deleteproduct", {
-      id
-    })
-    confirm()
-    console.log(id)
-    console.log(data, 'aaaaaaa')
-  }
+    let data = await axios.post(
+      "http://localhost:3000/api/v1/product/deleteproduct",
+      {
+        id,
+      }
+    );
+    confirm();
+    // console.log(id);
+    // console.log(data, 'aaaaaaa')
+  };
 
-  const uniqueStoreNames = productInfo ? [...new Set(productInfo.map(record => record.store.storeName))] : [];
-  const storeFilters = uniqueStoreNames.map(storeName => ({
+  const uniqueStoreNames = productInfo
+    ? [...new Set(productInfo.map((record) => record.store.storeName))]
+    : [];
+  const storeFilters = uniqueStoreNames.map((storeName) => ({
     text: storeName,
     value: storeName,
   }));
-
-
 
   const columns = [
     {
@@ -61,7 +66,11 @@ export default function AllProduct() {
       title: "Image",
       dataIndex: "image",
       render: (_, record) => (
-        <img width={100} src="https://cdn.shopify.com/s/files/1/0471/6039/3896/products/MacBooK-Air-M1-Space-Gray-iStockBD.png?v=1649504754&width=600" alt="image" />
+        <img
+          width={100}
+          src="https://cdn.shopify.com/s/files/1/0471/6039/3896/products/MacBooK-Air-M1-Space-Gray-iStockBD.png?v=1649504754&width=600"
+          alt="image"
+        />
       ),
     },
     {
@@ -79,8 +88,7 @@ export default function AllProduct() {
       render: (_, record) => (
         <Space size="middle">
           <Button>Edit</Button>
-          <Popconfirm open={open}
-            onConfirm={confirm}>
+          <Popconfirm open={open} onConfirm={confirm}>
             <Button onClick={() => handleDelete(record._id)}>Delete</Button>
           </Popconfirm>
         </Space>

@@ -6,10 +6,11 @@ import Selectmenu from "./Selectmenu";
 import { EditorState, convertToRaw } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
+import axios from "axios";
 
 export default function AddProduct() {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
-  const [storeName, setStoreName] = useState('');
+  const [productName, setProductName] = useState('');
   const [selectStore, setSelectStore] = useState('');
 
   const handleEditorChange = (newEditorState) => {
@@ -21,17 +22,24 @@ export default function AddProduct() {
   };
 
   const handleProductUpload = () => {
-    console.log(storeName, 'storeName');
+    console.log(productName, 'productName');
+    console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())), 'des');
     console.log(selectStore, 'selectStore');
-    console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())), 'storeName');
+
+    let data = axios.post('http://localhost:3000/api/v1/product/createproduct',{
+      name : productName,
+      description : draftToHtml(convertToRaw(editorState.getCurrentContent())),
+      // "image" : "aaaaaa",
+      store : selectStore
+    })
   };
 
   return (
     <div>
       <Flex vertical gap={16}>
         <div>
-          <Typography.Title level={5}>Store name</Typography.Title>
-          <Input onChange={(e) => setStoreName(e.target.value)} defaultValue="" placeholder="Enter Store Name" />
+          <Typography.Title level={5}>Product name</Typography.Title>
+          <Input onChange={(e) => setProductName(e.target.value)} defaultValue="" placeholder="Enter Product Name" />
         </div>
       </Flex>
 
