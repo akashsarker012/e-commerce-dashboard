@@ -22,7 +22,7 @@ const items = [
   //   ]),
   getItem("Product", "sub1", <ProductOutlined />, [
     getItem("Add Product", "/addproduct"),
-    getItem("All Product", "2"),
+    getItem("All Product", "/allproduct"),
   ]),
   {
     type: "divider",
