@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.rdw-editor-main {
+    border: 1px solid rgba(0, 0, 0, 0.364);
+}

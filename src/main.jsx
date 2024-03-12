@@ -11,6 +11,7 @@ import "./index.css";
 import Home from "./components/Home.jsx";
 import Login from "./components/Login.jsx";
 import Error from "./components/Error.jsx";
+import AddProduct from "./components/AddProduct.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,13 +20,13 @@ const router = createBrowserRouter(
 
 
       <Route path="/login" element={<Login />}></Route>
+      <Route path="/addproduct" element={<AddProduct />}></Route>
       <Route path="*" element={<Error />}></Route>
       </Route>
     </Route>
   )
 );
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+ 
     <RouterProvider router={router} />
-  </React.StrictMode>
 );

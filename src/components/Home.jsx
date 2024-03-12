@@ -1,7 +1,11 @@
-import React from 'react';
-import { AppstoreOutlined, ProductOutlined,UsergroupAddOutlined} from '@ant-design/icons';
-import { Col, Menu, Row } from 'antd';
-import { Outlet, useNavigate } from 'react-router-dom';
+import React from "react";
+import {
+  AppstoreOutlined,
+  ProductOutlined,
+  UsergroupAddOutlined,
+} from "@ant-design/icons";
+import { Col, Divider, Menu, Row } from "antd";
+import { Outlet, useNavigate } from "react-router-dom";
 function getItem(label, key, icon, children, type) {
   return {
     key,
@@ -12,50 +16,48 @@ function getItem(label, key, icon, children, type) {
   };
 }
 const items = [
-//   getItem('Products', 'sub1', <MailOutlined />, [
-//     getItem('Item 1', 'g1', null, [getItem('Option 1', '1'), getItem('Option 2', '2')], 'group'),
-//     getItem('Item 2', 'g2', null, [getItem('Option 3', '3'), getItem('Option 4', '4')], 'group'),
-//   ]),
-  getItem('Product', 'sub1', <ProductOutlined /> , [
-    getItem('Add Product', '/login'),
-    getItem('All Product', '2'),]),
+  //   getItem('Products', 'sub1', <MailOutlined />, [
+  //     getItem('Item 1', 'g1', null, [getItem('Option 1', '1'), getItem('Option 2', '2')], 'group'),
+  //     getItem('Item 2', 'g2', null, [getItem('Option 3', '3'), getItem('Option 4', '4')], 'group'),
+  //   ]),
+  getItem("Product", "sub1", <ProductOutlined />, [
+    getItem("Add Product", "/addproduct"),
+    getItem("All Product", "2"),
+  ]),
   {
-    type: 'divider',
+    type: "divider",
   },
-  
-  getItem('Category', 'sub2', <UsergroupAddOutlined />, [
-    getItem('T-Shirt', '3'),
-    getItem('Electronic', '4'),]),
+
+  getItem("Category", "sub2", <UsergroupAddOutlined />, [
+    getItem("T-Shirt", "3"),
+    getItem("Electronic", "4"),
+  ]),
   {
-    type: 'divider',
+    type: "divider",
   },
 ];
 const Home = () => {
-    const navigate = useNavigate()
+  const navigate = useNavigate();
   const onClick = (e) => {
     navigate(e.key);
   };
   return (
     <>
-    
-
-
-
-    <Row>
-      <Col span={8}>    <Menu
-      onClick={onClick}
-      style={{
-        width: 256,
-      }}
-    //   defaultSelectedKeys={['1']}
-    //   defaultOpenKeys={['sub1']}
-      mode="inline"
-      items={items}
-    /></Col>
-      <Col span={16}>
-        <Outlet></Outlet>
-      </Col>
-    </Row>
+      <Row gutter={[24, 16]}>
+        <Col  span={8}>
+          {" "}
+          <Menu
+            onClick={onClick}
+           
+            //   defaultSelectedKeys={['1']}
+            //   defaultOpenKeys={['sub1']}
+            mode="inline"
+            items={items} />
+        </Col>
+        <Col span={14}>
+          <Outlet></Outlet>
+        </Col>
+      </Row>
     </>
   );
 };
