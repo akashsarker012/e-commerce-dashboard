@@ -26,6 +26,9 @@ const columns = [
   {
     title: "Image",
     dataIndex: "image",
+    render: (_, record) => (
+        <img src="https://cdn.shopify.com/s/files/1/0471/6039/3896/products/MacBooK-Air-M1-Space-Gray-iStockBD.png?v=1649504754&width=600" alt="image" />
+      ),
   },
   {
     title: "Store Name",
