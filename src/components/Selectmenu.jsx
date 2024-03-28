@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Select, Tag } from 'antd';
 import axios from "axios";
 
-const Selectmenu = () => {
+const Selectmenu = ({ onChange }) => { // Destructure onChange from props
   const [storeData, setStoreData] = useState([]);
+  const [store, setStore] = useState('');
 
   useEffect(() => {
     async function fetchStoreData() {
@@ -32,7 +33,6 @@ const Selectmenu = () => {
         onClose={onClose}
         style={{
           marginInlineEnd: 4,
-          // Add your custom styles here
           padding: '4px 8px',
           borderRadius: '4px',
           background: '#f0f0f0',
@@ -44,8 +44,13 @@ const Selectmenu = () => {
     );
   };
 
+  const handleSelectChange = (selectedStores) => {
+    setStore(selectedStores); // Set the selected store
+    onChange(selectedStores); // Call the onChange prop
+  };
+
   return (
-    <Select
+    <Select onChange={handleSelectChange} // Update onChange handler
       mode="multiple"
       tagRender={tagRender}
       style={{

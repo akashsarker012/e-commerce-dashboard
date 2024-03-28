@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Space, Table ,Button, message, Popconfirm, Switch  } from "antd";
+import { Space, Table, Button, message, Popconfirm, Switch } from "antd";
 import axios from "axios";
 
 export default function AllProduct() {
@@ -31,7 +31,7 @@ export default function AllProduct() {
     })
     confirm()
     console.log(id)
-    console.log(data,'aaaaaaa')
+    console.log(data, 'aaaaaaa')
   }
 
   const uniqueStoreNames = productInfo ? [...new Set(productInfo.map(record => record.store.storeName))] : [];
@@ -79,11 +79,9 @@ export default function AllProduct() {
       render: (_, record) => (
         <Space size="middle">
           <Button>Edit</Button>
-          <Popconfirm  open={open}
-        onConfirm={confirm}>
-
-          <Button onClick={()=> handleDelete(record._id)}>Delete</Button>
-
+          <Popconfirm open={open}
+            onConfirm={confirm}>
+            <Button onClick={() => handleDelete(record._id)}>Delete</Button>
           </Popconfirm>
         </Space>
       ),
