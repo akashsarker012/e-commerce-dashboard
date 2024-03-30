@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { EditorState, convertToRaw } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { Flex, Input, Typography } from "antd";
 import Selectmenu from "./Selectmenu";
 
+
 export default function AddProduct() {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
+
 
   const onEditorStateChange = (newEditorState) => {
     setEditorState(newEditorState);
@@ -25,13 +27,11 @@ export default function AddProduct() {
         editorState={editorState}
         wrapperClassName="demo-wrapper"
         editorClassName="demo-editor"
-        onEditorStateChange={onEditorStateChange}
-      />
+        onEditorStateChange={onEditorStateChange} />
       <Typography.Title level={5}>Product Variends</Typography.Title>
 
       <Selectmenu></Selectmenu>
 
-      <Typography.Title level={5}>Product Store Name</Typography.Title>
 
     </div>
   );

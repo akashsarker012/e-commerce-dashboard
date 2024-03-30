@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Button, Space, Table } from "antd";
+import { Space, Table ,Button, message, Popconfirm, Switch  } from "antd";
 import axios from "axios";
 
 export default function AllProduct() {
   const [productInfo, setProductInfo] = useState();
+  const [open, setOpen] = useState(false);
+
+  const confirm = () => {
+    setOpen(false);
+    message.success('Detele Successfully');
+  };
 
   console.log(productInfo);
 
@@ -23,6 +29,7 @@ export default function AllProduct() {
     let data = await axios.post("http://localhost:3000/api/v1/product/deleteproduct", {
       id
     })
+    confirm()
     console.log(id)
     console.log(data,'aaaaaaa')
   }
@@ -72,7 +79,12 @@ export default function AllProduct() {
       render: (_, record) => (
         <Space size="middle">
           <Button>Edit</Button>
+          <Popconfirm  open={open}
+        onConfirm={confirm}>
+
           <Button onClick={()=> handleDelete(record._id)}>Delete</Button>
+
+          </Popconfirm>
         </Space>
       ),
     },
