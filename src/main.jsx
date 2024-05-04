@@ -13,6 +13,7 @@ import Login from "./components/Login.jsx";
 import Error from "./components/Error.jsx";
 import AddProduct from "./components/AddProduct.jsx";
 import AllProduct from "./components/AllProduct.jsx";
+import AllVariant from "./components/AllVariant.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +24,7 @@ const router = createBrowserRouter(
       <Route path="/login" element={<Login />}></Route>
       <Route path="/addproduct" element={<AddProduct />}></Route>
       <Route path="/allproduct" element={<AllProduct />}></Route>
+      <Route path="/allvariant" element={<AllVariant />}></Route>
       <Route path="*" element={<Error />}></Route>
       </Route>
     </Route>
