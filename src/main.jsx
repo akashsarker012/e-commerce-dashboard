@@ -14,6 +14,7 @@ import Error from "./components/Error.jsx";
 import AddProduct from "./components/AddProduct.jsx";
 import AllProduct from "./components/AllProduct.jsx";
 import AllVariant from "./components/AllVariant.jsx";
+import Registration from "./components/Registration.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,6 +28,7 @@ const router = createBrowserRouter(
       <Route path="/allvariant" element={<AllVariant />}></Route>
       <Route path="*" element={<Error />}></Route>
       </Route>
+      <Route path="/registration" element={<Registration />}></Route>
     </Route>
   )
 );
