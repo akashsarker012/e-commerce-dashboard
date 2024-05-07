@@ -18,9 +18,9 @@ const Registration = () => {
         // console.log(response.data.error, 'error');
         }else{
             setSuccess(response.data.success);
-            setTimeout(() => {
-                setSuccess(null);
-              }, 3000);
+            // setTimeout(() => {
+            //     setSuccess(null);
+            //   }, 3000);
             // console.log(response.data.success, 'success');
         }
     }
@@ -37,7 +37,7 @@ const Registration = () => {
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
       autoComplete="off"
-      style={{ maxWidth: 600, margin: '0 auto' }} >
+      style={{ width: '600px', margin: '0 auto' }} >
       {
       error && 
       <Alert  message={error} type="error" showIcon style={{ marginBottom: '1rem', width: '400px' }} />
@@ -79,6 +79,7 @@ const Registration = () => {
       </Form.Item>
 
       <Form.Item
+      style={{ width: '100%' }}
         label="Password"
         name="password"
         rules={[{ required: true, message: 'Please input your password!' }]}

@@ -20,19 +20,16 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
       <Route path="/" element={<Home />}>
-
-
-      <Route path="/login" element={<Login />}></Route>
-      <Route path="/addproduct" element={<AddProduct />}></Route>
-      <Route path="/allproduct" element={<AllProduct />}></Route>
-      <Route path="/allvariant" element={<AllVariant />}></Route>
-      <Route path="*" element={<Error />}></Route>
+        <Route path="/addproduct" element={<AddProduct />}></Route>
+        <Route path="/allproduct" element={<AllProduct />}></Route>
+        <Route path="/allvariant" element={<AllVariant />}></Route>
+        <Route path="*" element={<Error />}></Route>
       </Route>
+      <Route path="/login" element={<Login />}></Route>
       <Route path="/registration" element={<Registration />}></Route>
     </Route>
   )
 );
 ReactDOM.createRoot(document.getElementById("root")).render(
- 
-    <RouterProvider router={router} />
+  <RouterProvider router={router} />
 );
