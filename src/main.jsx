@@ -15,6 +15,8 @@ import AddProduct from "./components/AddProduct.jsx";
 import AllProduct from "./components/AllProduct.jsx";
 import AllVariant from "./components/AllVariant.jsx";
 import Registration from "./components/Registration.jsx";
+import { Provider } from 'react-redux'
+import store from "./store.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -31,5 +33,7 @@ const router = createBrowserRouter(
   )
 );
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
+  <Provider store={store}>
+     <RouterProvider router={router} />
+    </Provider>
 );

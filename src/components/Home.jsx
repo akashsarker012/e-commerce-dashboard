@@ -6,6 +6,8 @@ import {
 } from "@ant-design/icons";
 import { Col, Divider, Menu, Row } from "antd";
 import { Outlet, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 function getItem(label, key, icon, children, type) {
   return {
     key,
@@ -38,7 +40,16 @@ const items = [
   },
 ];
 const Home = () => {
+
+  const data = useSelector(state => state.user.value)
+  console.log(data, 'data');  
   const navigate = useNavigate();
+
+  useEffect(()=>{
+    if (!data) {
+      navigate('/login')
+    }
+  },[])
   const onClick = (e) => {
     navigate(e.key);
   };
