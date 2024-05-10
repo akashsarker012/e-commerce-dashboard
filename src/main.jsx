@@ -17,6 +17,13 @@ import AllVariant from "./components/AllVariant.jsx";
 import Registration from "./components/Registration.jsx";
 import { Provider } from 'react-redux'
 import store from "./store.jsx";
+import AddCategory from "./components/Category/AddCategory.jsx";
+import AllCategory from "./components/Category/AllCategory.jsx";
+import CategoryStatus from "./components/Category/CategoryStatus.jsx";
+import SubCategoryStatus from './components/Category/SubCategoryStatus.jsx';
+import AddSubCategory from "./components/Category/AddSubCategory.jsx";
+import ApproveCategory from "./components/Category/ApproveCategory.jsx";
+import ApproveSubCategory from './components/Category/ApproveSubCategory';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,6 +32,14 @@ const router = createBrowserRouter(
         <Route path="/addproduct" element={<AddProduct />}></Route>
         <Route path="/allproduct" element={<AllProduct />}></Route>
         <Route path="/allvariant" element={<AllVariant />}></Route>
+        <Route path="/addcategory" element={<AddCategory />}></Route>
+        <Route path="/addsubcategory" element={<AddSubCategory />}></Route>
+        <Route path="/subcategorystatus" element={<SubCategoryStatus />}></Route>
+        <Route path="/allcategory" element={<AllCategory />}></Route>
+        <Route path="/categorystatus" element={<CategoryStatus />}></Route>
+        <Route path="/categorystatus" element={<CategoryStatus />}></Route>
+        <Route path="/approve-category-status" element={<ApproveCategory />}></Route>
+        <Route path="/approve-subcategory-status" element={<ApproveSubCategory />}></Route>
         <Route path="*" element={<Error />}></Route>
       </Route>
       <Route path="/login" element={<Login />}></Route>

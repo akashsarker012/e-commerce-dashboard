@@ -8,6 +8,8 @@ import { Col, Divider, Menu, Row } from "antd";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import { SiSublimetext } from "react-icons/si";
+import { FcApproval } from "react-icons/fc";
 function getItem(label, key, icon, children, type) {
   return {
     key,
@@ -32,12 +34,30 @@ const items = [
   },
 
   getItem("Category", "sub2", <UsergroupAddOutlined />, [
-    getItem("T-Shirt", "3"),
-    getItem("Electronic", "4"),
+    getItem("Add Category", "/addcategory"),
+    getItem("All Category", "/allcategory"),
   ]),
   {
     type: "divider",
   },
+  getItem("Sub Category", "sub3", <SiSublimetext />, [
+    getItem("Add Sub Category", "/addsubcategory"),
+    getItem("All Sub Category", "6"),
+  ]),
+  {
+    type: "divider",
+  },
+  getItem("Approve Status", "sub4", <FcApproval />, [
+    getItem("Category Status", "/categorystatus"),
+    getItem("Sub Category Status", "/subcategorystatus"),
+  ]),
+  {
+    type: "divider",
+  },
+  getItem("Approve", "sub5", <FcApproval />, [
+    getItem("Approve Category", "/approve-category-status"),
+    getItem("Approve Sub Category", "/approve-subcategory-status"),
+  ]),
 ];
 const Home = () => {
 
