@@ -32,6 +32,7 @@ export default function AddProduct() {
       // "image" : "aaaaaa",
       store : selectStore
     })
+    console.log(data);
   };
 
   return (

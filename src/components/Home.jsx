@@ -24,37 +24,46 @@ const items = [
   //     getItem('Item 1', 'g1', null, [getItem('Option 1', '1'), getItem('Option 2', '2')], 'group'),
   //     getItem('Item 2', 'g2', null, [getItem('Option 3', '3'), getItem('Option 4', '4')], 'group'),
   //   ]),
-  getItem("Product", "sub1", <ProductOutlined />, [
+
+  getItem("User", "sub1", <UsergroupAddOutlined />, [
+    getItem("Merchant", "/merchant"),
+    getItem("User", "/user"),
+  ]),
+  {
+    type: "divider",
+  },
+  getItem("Product", "sub2", <ProductOutlined />, [
     getItem("Add Product", "/addproduct"),
     getItem("All Product", "/allproduct"),
+    getItem("Add Variant", "/addvariant"),
     getItem("All Variant", "/allvariant"),
   ]),
   {
     type: "divider",
   },
 
-  getItem("Category", "sub2", <UsergroupAddOutlined />, [
+  getItem("Category", "sub3", <UsergroupAddOutlined />, [
     getItem("Add Category", "/addcategory"),
     getItem("All Category", "/allcategory"),
   ]),
   {
     type: "divider",
   },
-  getItem("Sub Category", "sub3", <SiSublimetext />, [
+  getItem("Sub Category", "sub4", <SiSublimetext />, [
     getItem("Add Sub Category", "/addsubcategory"),
     getItem("All Sub Category", "6"),
   ]),
   {
     type: "divider",
   },
-  getItem("Approve Status", "sub4", <FcApproval />, [
+  getItem("Approve Status", "sub5", <FcApproval />, [
     getItem("Category Status", "/categorystatus"),
     getItem("Sub Category Status", "/subcategorystatus"),
   ]),
   {
     type: "divider",
   },
-  getItem("Approve", "sub5", <FcApproval />, [
+  getItem("Approve", "sub6", <FcApproval />, [
     getItem("Approve Category", "/approve-category-status"),
     getItem("Approve Sub Category", "/approve-subcategory-status"),
   ]),
