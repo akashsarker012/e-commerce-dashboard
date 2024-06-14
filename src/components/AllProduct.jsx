@@ -65,13 +65,16 @@ export default function AllProduct() {
     {
       title: "Image",
       dataIndex: "image",
-      render: (_, record) => (
-        <img
-          width={100}
-          src="https://cdn.shopify.com/s/files/1/0471/6039/3896/products/MacBooK-Air-M1-Space-Gray-iStockBD.png?v=1649504754&width=600"
-          alt="image"
-        />
-      ),
+      render: (_, record) => {
+        return (
+          <img
+            width={100}
+            src={record?.variants[0]?.image}
+            alt="image"
+          />
+        );
+      },
+      
     },
     {
       title: "Store Name",

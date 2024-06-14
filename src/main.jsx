@@ -25,6 +25,7 @@ import AddSubCategory from "./components/Category/AddSubCategory.jsx";
 import ApproveCategory from "./components/Category/ApproveCategory.jsx";
 import ApproveSubCategory from './components/Category/ApproveSubCategory';
 import AddVariant from "./components/AddVariant.jsx";
+import AddDiscount from "./components/AddDiscount.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,6 +33,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<Home />}>
         <Route path="/addproduct" element={<AddProduct />}></Route>
         <Route path="/addvariant" element={<AddVariant />}></Route>
+        <Route path="/add-discount" element={<AddDiscount />}></Route>
         <Route path="/allproduct" element={<AllProduct />}></Route>
         <Route path="/allvariant" element={<AllVariant />}></Route>
         <Route path="/addcategory" element={<AddCategory />}></Route>

@@ -7,32 +7,30 @@ import { EditorState, convertToRaw } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 import axios from "axios";
+import TextArea from "antd/es/input/TextArea";
 
 export default function AddProduct() {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [productName, setProductName] = useState('');
   const [selectStore, setSelectStore] = useState('');
+  const [des, setDes] = useState('');
 
-  const handleEditorChange = (newEditorState) => {
-    setEditorState(newEditorState);
-  };
+
 
   const handleStoreChange = (e) => {
     setSelectStore(e)
   };
 
-  const handleProductUpload = () => {
-    console.log(productName, 'productName');
-    console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())), 'des');
-    console.log(selectStore, 'selectStore');
+  const onChange = (e) => {
+    setDes(e.target.value);
+  };
 
+  const handleProductUpload = () => {
     let data = axios.post('http://localhost:3000/api/v1/product/createproduct',{
       name : productName,
-      description : draftToHtml(convertToRaw(editorState.getCurrentContent())),
-      // "image" : "aaaaaa",
+      description : des,
       store : selectStore
     })
-    console.log(data);
   };
 
   return (
@@ -43,20 +41,15 @@ export default function AddProduct() {
           <Input onChange={(e) => setProductName(e.target.value)} defaultValue="" placeholder="Enter Product Name" />
         </div>
       </Flex>
-
-      <Editor
-        editorState={editorState}
-        wrapperClassName="demo-wrapper"
-        editorClassName="demo-editor"
-        onEditorStateChange={handleEditorChange}
-      />
+      <Typography.Title level={5}>Product Descriptio</Typography.Title>
+      <TextArea  placeholder="Product description" allowClear onChange={onChange} />
       
       <Typography.Title level={5}>Product Variants</Typography.Title>
 
       {/* Pass the onChange prop to handle store selection */}
       <Selectmenu onChange={handleStoreChange} />
 
-      <Button onClick={handleProductUpload} type="primary" style={{ marginTop: '20px' }}>Upload Primary</Button>
+      <Button onClick={handleProductUpload} type="primary" style={{ marginTop: '20px' }}>Upload product</Button>
     </div>
   );
 }

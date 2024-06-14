@@ -11,7 +11,6 @@ export default function AddVariant() {
     useEffect(() => {
         async function getParoductData() {
             const data = await axios.get("http://localhost:3000/api/v1/product/getallproduct");
-
             let arr = [];
             data.data.map((item) => {
                 arr.push({
@@ -34,7 +33,6 @@ export default function AddVariant() {
     const handleImage = (e) => {
         setimage(e.target.files[0]);
     }
-    console.log(image, 'image');
     const handlechange = (event) => {
        const name = event.target.name;
        const value = event.target.value;
@@ -42,13 +40,6 @@ export default function AddVariant() {
     }
     console.log(variant, 'variant');
     const handleSubmit = async () => {
-        // console.log(productName);
-        // console.log(variant.color);
-        // console.log(variant.price);
-        // console.log(variant.quantity);
-        // console.log(variant.stroage);
-        // console.log(image, 'image');
-
         const data = await axios.post("http://localhost:3000/api/v1/product/createvariants", {
             color: variant.color,
             image: image,

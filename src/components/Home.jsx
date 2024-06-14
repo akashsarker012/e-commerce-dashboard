@@ -37,6 +37,7 @@ const items = [
     getItem("All Product", "/allproduct"),
     getItem("Add Variant", "/addvariant"),
     getItem("All Variant", "/allvariant"),
+    getItem("Add Discount", "/add-discount"),
   ]),
   {
     type: "divider",
