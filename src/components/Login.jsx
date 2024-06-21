@@ -15,7 +15,7 @@ const Login = () => {
 
   const onFinish = async (values) => {
     // console.log(values, 'values');
-    const response = await axios.post('https://e-commerce-backend-phi-eight.vercel.app/athentication/login', values);
+    const response = await axios.post('https://e-commerce-backend-phi-eight.vercel.app/api/v1/athentication/login', values);
     // console.log(response, 'response');
     if (response.data.error) {
       setError(response.data.error);
