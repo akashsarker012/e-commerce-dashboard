@@ -9,7 +9,7 @@ export default function AllVariant() {
   useEffect(() => {
     async function getAllVariant() {
       try {
-        const response = await axios.get('http://localhost:3000/api/v1/product/getvariants');
+        const response = await axios.get('https://e-commerce-backend-phi-eight.vercel.app/api/v1/product/getvariants');
         setVariantData(response.data);
       } catch (error) {
         console.error('Error fetching variant data:', error);
@@ -54,7 +54,7 @@ export default function AllVariant() {
     },
   ];
 
-  console.log(variantData);
+  // console.log(variantData);
 
   return (
     <div>

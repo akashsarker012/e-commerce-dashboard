@@ -6,11 +6,11 @@ export default function AddVariant() {
 
     const [productData, setproductData] = useState([])
     const [productName, setProductName] = useState()
-    console.log(productName, 'productName');
+    // console.log(productName, 'productName');
     const [image, setimage] = useState()
     useEffect(() => {
         async function getParoductData() {
-            const data = await axios.get("http://localhost:3000/api/v1/product/getallproduct");
+            const data = await axios.get("https://e-commerce-backend-phi-eight.vercel.app/api/v1/product/getallproduct");
             let arr = [];
             data.data.map((item) => {
                 arr.push({
@@ -22,6 +22,7 @@ export default function AddVariant() {
         }
         getParoductData();
     }, [])
+    // console.log(productData, 'productData');
 
     const [variant, setvariant] = useState({
         color: '',
@@ -38,9 +39,9 @@ export default function AddVariant() {
        const value = event.target.value;
         setvariant({ ...variant, [name]: value });
     }
-    console.log(variant, 'variant');
+    // console.log(variant, 'variant');
     const handleSubmit = async () => {
-        const data = await axios.post("http://localhost:3000/api/v1/product/createvariants", {
+        const data = await axios.post("https://e-commerce-backend-phi-eight.vercel.app/api/v1/product/createvariants", {
             color: variant.color,
             image: image,
             price : variant.price,
@@ -50,7 +51,7 @@ export default function AddVariant() {
         },{
             headers: {"Content-Type": "multipart/form-data"}
         })
-        console.log(data, 'data');
+        // console.log(data, 'data');
  
     }
     return (

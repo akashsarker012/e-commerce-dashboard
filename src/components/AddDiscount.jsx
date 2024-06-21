@@ -17,7 +17,7 @@ export default function AddDiscount() {
   useEffect(() => {
     async function getParoductData() {
       const data = await axios.get(
-        "http://localhost:3000/api/v1/product/getallproduct"
+        "https://e-commerce-backend-phi-eight.vercel.app/api/v1/product/getallproduct"
       );
       let arr = [];
       data.data.map((item) => {
@@ -33,7 +33,7 @@ export default function AddDiscount() {
   useEffect(() => {
     async function getParoductData() {
       const data = await axios.get(
-        "http://localhost:3000/api/v1/category/getallcategory"
+        "https://e-commerce-backend-phi-eight.vercel.app/api/v1/category/getallcategory"
       );
       let arr = [];
       data.data.map((item) => {
@@ -65,18 +65,18 @@ export default function AddDiscount() {
 
 
   const handlechange = (event) => {
-    console.log(event);
+    // console.log(event);
     const name = event.target.name;
     const value = event.target.value;
     setDiscount({ ...discount, [name]: value });
   }
 
   const handleSubmit = (e) => {
-      console.log(discount.cash);
-      console.log(discount.discount);
-      console.log(category);
-      console.log(subCategory);
-      console.log(product);
+      // console.log(discount.cash);
+      // console.log(discount.discount);
+      // console.log(category);
+      // console.log(subCategory);
+      // console.log(product);
 
       const data = axios.post('http://localhost:3000/api/v1/discount/adddiscount', {
         cash : discount.cash,

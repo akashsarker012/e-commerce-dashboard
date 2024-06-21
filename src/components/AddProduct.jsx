@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import { Button, Flex, Input, Typography } from "antd";
+import { Button, Flex, Input, Select, Typography } from "antd";
 import Selectmenu from "./Selectmenu";
 import { EditorState, convertToRaw } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
@@ -13,6 +13,8 @@ export default function AddProduct() {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [productName, setProductName] = useState('');
   const [selectStore, setSelectStore] = useState('');
+  const [selectCategory, setSelectCategory] = useState('');
+  const [productData, setProductData] = useState([]);
   const [des, setDes] = useState('');
 
 
@@ -20,18 +22,38 @@ export default function AddProduct() {
   const handleStoreChange = (e) => {
     setSelectStore(e)
   };
+  const handleCategory = (e) => {
+    setSelectCategory(e)
+  };
 
   const onChange = (e) => {
     setDes(e.target.value);
   };
 
   const handleProductUpload = () => {
-    let data = axios.post('http://localhost:3000/api/v1/product/createproduct',{
+    let data = axios.post('https://e-commerce-backend-phi-eight.vercel.app/api/v1/product/createproduct',{
       name : productName,
       description : des,
-      store : selectStore
+      store : selectStore,
+      category : selectCategory
     })
   };
+
+  useEffect(() => {
+    async function getParoductData() {
+        const data = await axios.get("https://e-commerce-backend-phi-eight.vercel.app/api/v1/category/getallcategory");
+        let arr = [];
+        data.data.map((item) => {
+            arr.push({
+                value: item._id,
+                label: item.name,
+            });
+            setProductData(arr);
+        })
+    }
+    getParoductData();
+}, [])
+// console.log(productData);
 
   return (
     <div>
@@ -43,6 +65,16 @@ export default function AddProduct() {
       </Flex>
       <Typography.Title level={5}>Product Descriptio</Typography.Title>
       <TextArea  placeholder="Product description" allowClear onChange={onChange} />
+
+      <Typography.Title level={5}>Select Category</Typography.Title>
+
+{/* Pass the onChange prop to handle store selection */}
+<Select
+                defaultValue="Select product"
+                style={{ width: 120 }}
+                options={productData}
+                onChange={handleCategory}
+            />
       
       <Typography.Title level={5}>Product Variants</Typography.Title>
 

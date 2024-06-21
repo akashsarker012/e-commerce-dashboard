@@ -14,16 +14,16 @@ const Login = () => {
   const dispatch = useDispatch()
 
   const onFinish = async (values) => {
-    console.log(values, 'values');
-    const response = await axios.post('http://localhost:3000/api/v1/athentication/login', values);
-    console.log(response, 'response');
+    // console.log(values, 'values');
+    const response = await axios.post('https://e-commerce-backend-phi-eight.vercel.app/athentication/login', values);
+    // console.log(response, 'response');
     if (response.data.error) {
       setError(response.data.error);
       setPasswordError(response.data.error);
       setTimeout(() => {
         setError(null);
       }, 3000);
-      console.log(response.data.error, 'error');
+      // console.log(response.data.error, 'error');
     } else {
       if (response.data.role === "member") {
         setError("You are not authorized")
@@ -41,7 +41,7 @@ const Login = () => {
           navigate('/');
         }, 3000);
       }
-      console.log(response.data.success, 'success');
+      // console.log(response.data.success, 'success');
     }
   }
   // const onFinishFailed = (errorInfo) => {

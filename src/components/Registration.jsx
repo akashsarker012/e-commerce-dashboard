@@ -9,7 +9,7 @@ const Registration = () => {
 //   console.log(success,'success');
 
   const onFinish = async (values) => {
-      const response = await axios.post('http://localhost:3000/api/v1/athentication/registration', values);
+      const response = await axios.post('https://e-commerce-backend-phi-eight.vercel.app/api/v1/athentication/registration', values);
       if(response.data.error){
           setError(response.data.error);
           setTimeout(() => {

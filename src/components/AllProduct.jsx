@@ -17,7 +17,7 @@ export default function AllProduct() {
     async function getProductData() {
       try {
         const productData = await axios.get(
-          "http://localhost:3000/api/v1/product/getallproduct"
+          "https://e-commerce-backend-phi-eight.vercel.app/api/v1/product/getallproduct"
         );
         setProductInfo(productData.data);
       } catch (error) {
@@ -29,7 +29,7 @@ export default function AllProduct() {
 
   const handleDelete = async (id) => {
     let data = await axios.post(
-      "http://localhost:3000/api/v1/product/deleteproduct",
+      "https://e-commerce-backend-phi-eight.vercel.app/api/v1/product/deleteproduct",
       {
         id,
       }
@@ -100,7 +100,7 @@ export default function AllProduct() {
   ];
 
   const onChange = (pagination, filters, sorter, extra) => {
-    console.log("params", pagination, filters, sorter, extra);
+    // console.log("params", pagination, filters, sorter, extra);
   };
 
   return (

@@ -9,7 +9,7 @@ const Selectmenu = ({ onChange }) => { // Destructure onChange from props
   useEffect(() => {
     async function fetchStoreData() {
       try {
-        const response = await axios.get("http://localhost:3000/api/v1/merchant/allstore");
+        const response = await axios.get("https://e-commerce-backend-phi-eight.vercel.app/api/v1/merchant/allstore");
         setStoreData(response.data);
       } catch (error) {
         console.error("Error fetching store data:", error);
@@ -45,12 +45,12 @@ const Selectmenu = ({ onChange }) => { // Destructure onChange from props
   };
 
   const handleSelectChange = (selectedStores) => {
-    setStore(selectedStores); // Set the selected store
-    onChange(selectedStores); // Call the onChange prop
+    setStore(selectedStores); 
+    onChange(selectedStores); 
   };
 
   return (
-    <Select onChange={handleSelectChange} // Update onChange handler
+    <Select onChange={handleSelectChange} 
       mode="multiple"
       tagRender={tagRender}
       style={{

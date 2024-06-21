@@ -72,7 +72,7 @@ const items = [
 const Home = () => {
 
   const data = useSelector(state => state.user.value)
-  console.log(data, 'data');  
+  // console.log(data, 'data');  
   const navigate = useNavigate();
 
   useEffect(()=>{
