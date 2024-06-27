@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { SiSublimetext } from "react-icons/si";
 import { FcApproval } from "react-icons/fc";
+import Navbar from "./Navbar";
 function getItem(label, key, icon, children, type) {
   return {
     key,
@@ -72,7 +73,7 @@ const items = [
 const Home = () => {
 
   const data = useSelector(state => state.user.value)
-  // console.log(data, 'data');  
+
   const navigate = useNavigate();
 
   useEffect(()=>{
@@ -84,15 +85,16 @@ const Home = () => {
     navigate(e.key);
   };
   return (
-    <>
+    <div>
+      <div>
+
+    <Navbar/>
+      </div>
       <Row gutter={[24, 16]}>
         <Col  span={8}>
           {" "}
           <Menu
             onClick={onClick}
-           
-            //   defaultSelectedKeys={['1']}
-            //   defaultOpenKeys={['sub1']}
             mode="inline"
             items={items} />
         </Col>
@@ -100,7 +102,7 @@ const Home = () => {
           <Outlet></Outlet>
         </Col>
       </Row>
-    </>
+    </div>
   );
 };
 export default Home;

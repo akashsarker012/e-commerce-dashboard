@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Alert, Button, Form, Input } from 'antd';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { loginInfo } from '../slices/userSlice';
+import { useEffect } from 'react';
+
 
 const Login = () => {
   const [error, setError] = useState(null);
@@ -12,6 +14,7 @@ const Login = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch()
+
 
   const onFinish = async (values) => {
     // console.log(values, 'values');
